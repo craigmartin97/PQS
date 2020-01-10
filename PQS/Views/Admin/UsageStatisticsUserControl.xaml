@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="PQS.Views.Admin.UsageStatisticsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1200">
+
+    <Grid Style="{StaticResource BaseGridStyle}" Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Date pickers -->
+        <Grid Margin="0,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Label Content="Start Date" Style="{StaticResource DefaultDescriptionLabelStyle}"/>
+            <DatePicker Grid.Column="1"  FontSize="{StaticResource FontSize18}" SelectedDate="{Binding Path=StartDate}"/>
+
+            <Label Grid.Column="2" Content="End Date" Style="{StaticResource DefaultDescriptionLabelStyle}"/>
+            <DatePicker Grid.Column="3" FontSize="{StaticResource FontSize18}" SelectedDate="{Binding Path=EndDate}"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <Grid>
+                <DataGrid Visibility="{Binding Path=AllModuleRecords, Converter={StaticResource BooleanToVisibilityConverter}}" ItemsSource="{Binding Path=ModuleExecutionRecords}" SelectedItem="{Binding Path=SelectedModule}" 
+                      Style="{StaticResource BaseDataGridStyle}" SelectionUnit="FullRow" CellStyle="{StaticResource BaseDataGridCellStyle}"
+                      CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Module" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource ModuleTemplate}" />
+                        <DataGridTemplateColumn Header="Username" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource UserTemplate}" />
+                        <DataGridTemplateColumn Header="Execution Date" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource ExecutionDateTempalte}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                
+
+                <ListBox x:Name="lb"
+                         Visibility="{Binding Path=FilteredModuleRecords, Converter={StaticResource BooleanToVisibilityConverter}}"
+                         ItemsSource="{Binding Path=UsersStats}" SelectedItem="{Binding Path=SelectedModule}" >
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <!--<Label Content="{Binding Path=Title}" />-->
+                                    <TextBlock  FontSize="{StaticResource FontSize28}" Margin="10,0,0,0"
+                                        Foreground="{StaticResource BlackColorBrush}">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} - Number of executions: {1}">
+                                                <Binding Path="Title" />
+                                                <Binding Path="NumOfExecutions" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+
+                                <ScrollViewer Grid.Row="1">
+                                    
+                                    <DataGrid MinWidth="1000" MaxWidth="1450" Margin="0,0,0,35"
+                                          ItemsSource="{Binding Path=ModuleExecutionRecords}"
+                                        Style="{StaticResource BaseDataGridStyle}" SelectionUnit="FullRow" CellStyle="{StaticResource BaseDataGridCellStyle}"
+                                        CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn Header="Username" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource UserTemplate}" />
+                                            <DataGridTemplateColumn Header="Last Execution Date" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource ExecutionDateTempalte}" />
+                                            <DataGridTemplateColumn Header="Number Of Executions" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource ExecutionCounterTempalte}" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" VerticalAlignment="Bottom" MinHeight="50">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,70,0">
+                <Button  MinWidth="220" Content="{Binding Path=ChangeListButtonContent}" Command="{Binding Path=ChangeViewCommand}" Style="{StaticResource CategoryOperationButtonStyle}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

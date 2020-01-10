@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="PQS.Views.Admin.UserManagementUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Style="{StaticResource BaseGridStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="4.8*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Style="{StaticResource AdminGridRowStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{StaticResource Username}" Style="{StaticResource DefaultDescriptionLabelStyle}" />
+
+            <ComboBox x:Name="UsernameCombo"
+                      Grid.Column="1"
+                      ItemsSource="{Binding Path=AllUsers}"
+                      SelectedItem="{Binding Path=SelectedUser}"
+                      DisplayMemberPath="Username"
+                      Style="{DynamicResource DefaultAdminComboBoxStyle}" />
+            <!--<TextBox x:Name="Username"
+                     Grid.Column="1" 
+                     Text="{Binding Path=SelectedUser.Username, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                     Style="{StaticResource SmallTextBoxStyle}" />-->
+        </Grid>
+
+        <!-- Main content area -->
+        <Grid Grid.Row="1" Style="{StaticResource AdminGridRowStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{StaticResource WindowsID}" Style="{StaticResource DefaultDescriptionLabelStyle}" />
+
+            <ComboBox x:Name="UsersCombo"
+                      Grid.Column="1"
+                      ItemsSource="{Binding Path=AllUsers}"
+                      SelectedItem="{Binding Path=SelectedUser}"
+                      DisplayMemberPath="WindowsId"
+                      Style="{DynamicResource DefaultAdminComboBoxStyle}" />
+        </Grid>
+
+
+
+        <Grid Grid.Row="2" Style="{StaticResource AdminGridRowStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{StaticResource Admin}" Style="{StaticResource DefaultDescriptionLabelStyle}"/>
+            <CheckBox Grid.Column="1" 
+                      HorizontalAlignment="Left" VerticalAlignment="Center" 
+                      Style="{DynamicResource CheckBoxBase}" IsChecked="{Binding Path=SelectedUser.IsAdmin}"
+                      Margin="20,0,0,0"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Style="{StaticResource BaseGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Separator Margin="60,0,0,0"/>
+            <Label Grid.Column="1" HorizontalContentAlignment="Center" Style="{StaticResource BaseLabelTagStyle}" Content="Users Modules" />
+            <Separator Grid.Column="2" Margin="0,0,60,0" />
+
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <ScrollViewer>
+                <DataGrid ItemsSource="{Binding Path=AllUsersModules}" SelectedItem="{Binding Path=SelectedUsersModule}" 
+                      Style="{StaticResource BaseDataGridStyle}" SelectionUnit="FullRow" CellStyle="{StaticResource BaseDataGridCellStyle}">
+
+
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Module" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource ModuleTemplate}"/>
+                        <DataGridTemplateColumn Header="Permission Level" HeaderStyle="{StaticResource DataGridColumnHeaderStyle}" Width="*" 
+                                            CellTemplate="{StaticResource PermissionTemplate}" 
+                                            CellEditingTemplate="{StaticResource EditingPermissionTemplate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+
+
+        <Grid Grid.Row="5" VerticalAlignment="Bottom" MinHeight="50">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,70,0">
+                <Button  Content="{StaticResource DeleteUser}" Command="{Binding Path=DeleteUserCommand}" 
+                         Style="{StaticResource CanBeDisabledButtonStyle}" Margin="0,0,50,0"
+                         IsEnabled="{Binding SelectedItems.Count, ElementName=UsersCombo}" 
+                />
+                <Button  Content="{StaticResource UpdateUser}" Command="{Binding Path=UpdateUserCommand}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CanBeDisabledButtonStyle}">
+                            <Setter Property="IsEnabled" Value="{Binding SelectedItems.Count, ElementName=UsersCombo}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=Username}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Setter Property="Opacity" Value="0.6" />
+                                </DataTrigger>
+                            </Style.Triggers>
+
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

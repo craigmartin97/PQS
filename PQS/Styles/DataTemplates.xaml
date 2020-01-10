@@ -1,0 +1,221 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sct="clr-namespace:Converters;assembly=Converters">
+
+    <BooleanToVisibilityConverter x:Key="BoolToVisConv" />
+    
+    <DataTemplate x:Key="ModuleTemplate">
+        <Border>
+            <Label  Content="{Binding Path=Module.AdminIdentifyingName}" Style="{StaticResource ListViewContentLabelStyle}"/>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="UserTemplate">
+        <Border>
+            <Label  Content="{Binding Path=User.Username}" Style="{StaticResource ListViewContentLabelStyle}"/>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="NameTwoAndFourTemplate">
+        <Border>
+            <Label Style="{StaticResource ListViewContentLabelStyle}">
+                <Label.Content>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} - {1}">
+                                <Binding Path="User.Username" />
+                                <Binding Path="User.WindowsId" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PermissionTemplate">
+        <Border>
+            
+            <!--<Label  Content="{Binding Path=PermissionLevel.Access}" Style="{StaticResource ListViewContentLabelStyle}"/>-->
+
+            <Label Style="{StaticResource ListViewContentLabelStyle}">
+                <TextBlock>
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}"> <!-- BasedOn="{StaticResource ListViewContentLabelStyle}" -->
+
+                        <Setter Property="Text" Value="{Binding Path=PermissionLevel.Access}" />
+                        
+                        <Style.Triggers>
+                            
+                            <!-- If the user hasrequested then show the text as .... User Requested ... Read -->
+                            <DataTrigger Binding="{Binding Path=RequestAlreadyMadePermissionLevelOptions}" Value="False">
+                                <Setter Property="Text"  Value="{Binding Path=PermissionLevel.Access, StringFormat='{}User Requested: {0}'}"/>
+                            </DataTrigger>
+                            
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                </TextBlock>
+            </Label>
+            
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="EditingPermissionTemplate">
+        <Border>
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding Path=PermissionLevelOptions}" HorizontalContentAlignment="Stretch">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Style="{StaticResource BaseButtonStyle}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.UpdatePermissionCommand}"
+                                            CommandParameter="{Binding}" sct:SwitchCellTemplate.SwitchTemplateProperty="True" >
+                                    <TextBlock TextWrapping="Wrap">
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Text" Value="{Binding Path=Access}" />
+                                                <Style.Triggers>
+                                                    <!-- If need to show accept btns -->
+                                                    <DataTrigger Binding="{Binding Path=HasRequested}" Value="True">
+                                                        <Setter Property="Text" Value="{Binding Path=AccessDescription}" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Visibility="{Binding Path=RequestAlreadyMadePermissionLevelOptions, Converter={StaticResource BoolToVisConv}}"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.UpdatePermissionCommand}"
+                        CommandParameter="{x:Null}" sct:SwitchCellTemplate.SwitchTemplateProperty="True"
+                        VerticalContentAlignment="Bottom" Content="{StaticResource RemovePerm}" 
+                        Style="{StaticResource RedButtonStyle}" Background="{StaticResource BloodRedBrush}"
+                    >
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <DataTemplate.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVisConv" />
+        </DataTemplate.Resources>
+    </DataTemplate>
+
+    <!-- THIS TEMPLATE IS CURSED, INSTEAD OF CHANGING ONE IT BLOODY CHANGES THEM ALL!!!!!!!!!!!!!! /> 
+    <DataTemplate x:Key="PermissionOptionTemplate">
+        <Border>
+            <ComboBox  
+                    ItemsSource="{Binding Path=PermissionLevels, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    SelectedItem="{Binding Path=PermissionLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    IsSynchronizedWithCurrentItem="True"
+                    DisplayMemberPath="Access"
+                    FontSize="{StaticResource FontSize16}"
+                    Style="{DynamicResource ComboBoxStyle}">
+            </ComboBox>
+        </Border>
+    </DataTemplate> -->
+
+    <DataTemplate x:Key="ResponseTemplate">
+        <Border>
+            <UniformGrid Columns="2" MinWidth="300" MaxWidth="310">
+
+                <Button Content="Give Permissions" Style="{StaticResource BaseButtonStyle}" 
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Path=DataContext.AcceptSoftwareRequestCommand}"
+                        FontSize="{StaticResource FontSize16}"
+                        CommandParameter="{Binding}" Margin="10,0,10,0"/>
+
+                <Button Content="Reject Request" Style="{StaticResource BaseButtonStyle}" 
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Path=DataContext.RejectSoftwareRequestCommand}"
+                        FontSize="{StaticResource FontSize16}"
+                        CommandParameter="{Binding}" Margin="10,0,10,0"/>
+            </UniformGrid>
+            
+        </Border>
+    </DataTemplate>
+
+    
+    <!--<DataTemplate x:Key="EditingPermissionTemplate">
+        <Border>
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.AllPermissionLevels}" HorizontalContentAlignment="Stretch">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Button Style="{StaticResource BaseButtonStyle}"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.UpdatePermissionCommand}"
+                                            CommandParameter="{Binding}" sct:SwitchCellTemplate.SwitchTemplateProperty="True" >
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Access}" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button 
+                        Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.UpdatePermissionCommand}"
+                        CommandParameter="{x:Null}" sct:SwitchCellTemplate.SwitchTemplateProperty="True"
+                        VerticalContentAlignment="Bottom" Content="{StaticResource RemovePerm}" 
+                        Style="{StaticResource RedButtonStyle}" Background="{StaticResource BloodRedBrush}" />
+            </StackPanel>
+        </Border>
+    </DataTemplate>-->
+
+    
+
+
+    <DataTemplate x:Key="ParameterTemplate">
+        <Border>
+            <Label Content="{Binding Path=Parameter}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+
+    </DataTemplate>
+
+    <DataTemplate x:Key="OrderTemplate">
+        <Border>
+            <Label Content="{Binding Path=Order}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="EditingParameterTemplate">
+        <Border>
+            <TextBox Text="{Binding Path=Parameter}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+
+    </DataTemplate>
+
+    <DataTemplate x:Key="EditingOrderTemplate">
+        <Border>
+            <TextBox Text="{Binding Path=Order}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+    </DataTemplate>
+
+
+    <!-- Module execution records -->
+    <DataTemplate x:Key="AdminIdentifyingNameTemplate">
+        <Border>
+            <Label Content="{Binding Path=AdminIdentifyingName}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+
+    </DataTemplate>
+
+    <DataTemplate x:Key="UsernameTempalte">
+        <Border>
+            <Label Content="{Binding Path=Username}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ExecutionDateTempalte">
+        <Border>
+            <Label Content="{Binding Path=ExecutionDate}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ExecutionCounterTempalte">
+        <Border>
+            <Label Content="{Binding Path=ExecutionCounter}" Style="{StaticResource ListViewContentLabelStyle}" />
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

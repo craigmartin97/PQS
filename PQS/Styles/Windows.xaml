@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:chrome="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell">
+
+    <!--<Style x:Key="BaseWindowChromeStyle" TargetType="{x:Type chrome:WindowChrome}">
+        <Setter Property="ResizeBorderThickness" Value="5" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="GlassFrameThickness" Value="0" />
+    </Style>-->
+</ResourceDictionary>

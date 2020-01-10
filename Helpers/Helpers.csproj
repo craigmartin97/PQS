@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E3AA13B-DDA2-4E98-A2B0-EBFFCFD6FAB6}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Helpers</RootNamespace>
+    <AssemblyName>Helpers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CustomDialog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\dfsds13\shared\Apps\Internal\In-HouseDLLs\CustomDialog\CurrentVersion\CustomDialog.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoriesHelpers\AddCategory.cs" />
+    <Compile Include="CategoriesHelpers\CategoriesRetrievor.cs" />
+    <Compile Include="CategoriesHelpers\CategoriesUpdator.cs" />
+    <Compile Include="CategoriesHelpers\CategoryExists.cs" />
+    <Compile Include="CategoriesHelpers\UsersCategoriesRetrievor.cs" />
+    <Compile Include="ExecutionRecords\AddModuleExecutionRecords.cs" />
+    <Compile Include="ExecutionRecords\ModuleExecutionRecordsRetrievor.cs" />
+    <Compile Include="Executor\ModuleExecutor.cs" />
+    <Compile Include="Interfaces\IAdd.cs" />
+    <Compile Include="Interfaces\IAdvancedRetrievor.cs" />
+    <Compile Include="ModulesHelpers\AddModule.cs" />
+    <Compile Include="ModulesHelpers\AddModuleParameters.cs" />
+    <Compile Include="ModulesHelpers\AllUsersModulesRetrievor.cs" />
+    <Compile Include="ModulesHelpers\FilterUsersModules.cs" />
+    <Compile Include="ModulesHelpers\ModuleChanger.cs" />
+    <Compile Include="ModulesHelpers\ModuleDeletor.cs" />
+    <Compile Include="ModulesHelpers\ModuleExists.cs" />
+    <Compile Include="ModulesHelpers\ModuleParametersDeletor.cs" />
+    <Compile Include="ModulesHelpers\ModuleParametersRetrievor.cs" />
+    <Compile Include="ModulesHelpers\ModuleParametersUpdator.cs" />
+    <Compile Include="ModulesHelpers\ModulesRetrievor.cs" />
+    <Compile Include="ModulesHelpers\ModuleUpdator.cs" />
+    <Compile Include="ModulesHelpers\UpdateFavourite.cs" />
+    <Compile Include="ModulesHelpers\UsersModulesProcessor.cs" />
+    <Compile Include="ModulesHelpers\UsersModulesUpdator.cs" />
+    <Compile Include="ObserverFavourites\IObserver.cs" />
+    <Compile Include="ObserverFavourites\Subject.cs" />
+    <Compile Include="PermissionLevelsHelper\AvaliableUserPermissionLevels.cs" />
+    <Compile Include="PermissionLevelsHelper\PermissionLevelsRetrievor.cs" />
+    <Compile Include="PermissionLevelsHelper\UserPermissionLevelRetrievor.cs" />
+    <Compile Include="RegEdit\RegistryRemover.cs" />
+    <Compile Include="RegEdit\RegistryWriter.cs" />
+    <Compile Include="UserHelpers\UserUpdator.cs" />
+    <Compile Include="GetApplicationVersion.cs" />
+    <Compile Include="Interfaces\IDeletor.cs" />
+    <Compile Include="Interfaces\IRetrievor.cs" />
+    <Compile Include="Interfaces\ITitleUpdator.cs" />
+    <Compile Include="Interfaces\IUpdator.cs" />
+    <Compile Include="Interfaces\IUsername.cs" />
+    <Compile Include="Interfaces\IUserProcessor.cs" />
+    <Compile Include="Login\CurrentUser.cs" />
+    <Compile Include="Login\UserProcessor.cs" />
+    <Compile Include="Login\ValidateUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UserHelpers\DeleteUser.cs" />
+    <Compile Include="UserHelpers\UsersRetrievor.cs" />
+    <Compile Include="UserRequests\AddUserModuleRequest.cs" />
+    <Compile Include="UserRequests\AllUsersRequests.cs" />
+    <Compile Include="UserRequests\BaseUserModuleUpdator.cs" />
+    <Compile Include="UserRequests\CompleteUserRequest.cs" />
+    <Compile Include="UserRequests\DeleteUserModuleRequest.cs" />
+    <Compile Include="UserRequests\UserModuleRequestsRetriever.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PQS.Models\PQS.Models.csproj">
+      <Project>{441F82DB-2505-4709-BF12-6B1E8A9818BA}</Project>
+      <Name>PQS.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

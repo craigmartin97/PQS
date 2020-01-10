@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Title style for main window and custom dialog windows -->
+    <Style x:Key="WindowTitleStyle" TargetType="{x:Type Label}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+
+    <!-- Base label style that appears next to textboxes for users to engage with -->
+    <Style x:Key="BaseLabelTagStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseFontStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSize22}" />
+    </Style>
+
+
+    <!-- Base admin editing label style, descriptions of input boxes -->
+    <Style x:Key="BaseAdminDescriptionTagStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseFontStyle}">
+        <Setter Property="FontSize" Value="{StaticResource FontSize20}" />
+    </Style>
+
+    <!-- Category Description Label -->
+    <Style x:Key="DefaultDescriptionLabelStyle" TargetType="{x:Type Label}" BasedOn="{StaticResource BaseAdminDescriptionTagStyle}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="15,0,0,0" />
+    </Style>
+   
+
+    <!-- Value editing label styling for conditions -->
+    <!--<Style x:Key="ListViewContentLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize18}" />
+        <Setter Property="Focusable" Value="False" />
+    </Style>-->
+
+
+    <Style x:Key="BaseHeaderLabelStyle" TargetType="{x:Type Label}">
+        <Setter Property="Background" Value="{StaticResource NavyBlueBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource WhiteColorBrush}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize22}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+
+</ResourceDictionary>

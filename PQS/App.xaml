@@ -1,0 +1,106 @@
+﻿<Application x:Class="PQS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dialogsVM="clr-namespace:CustomDialog.Dialogs;assembly=CustomDialog"
+             xmlns:dialogViews="clr-namespace:CustomDialog.Views;assembly=CustomDialog"
+             xmlns:welcomeView="clr-namespace:PQS.Views.CustomControls"
+             xmlns:welcomeVM="clr-namespace:PQS.ViewModels.ViewModels.CustomControls;assembly=PQS.ViewModels"
+             xmlns:Views="clr-namespace:PQS.Views"
+             xmlns:VM="clr-namespace:PQS.ViewModels.ViewModels;assembly=PQS.ViewModels"
+             xmlns:chrome="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+             xmlns:AdminViews="clr-namespace:PQS.Views.Admin"
+             xmlns:AVM="clr-namespace:PQS.ViewModels.ViewModels.Admin;assembly=PQS.ViewModels"
+             >
+    <Application.Resources>
+
+        <ResourceDictionary>
+
+            <!-- Alert Dialog -->
+            <DataTemplate DataType="{x:Type dialogsVM:AlertDialogViewModel}" >
+                <dialogViews:AlertUserControl DataContext="{Binding}"/>
+            </DataTemplate>
+
+            <!-- Yes No Dialog -->
+            <DataTemplate DataType="{x:Type dialogsVM:YesNoDialogViewModel}" >
+                <dialogViews:YesNoUserControl DataContext="{Binding}"/>
+            </DataTemplate>
+
+            <!-- Welcome message dialog user control -->
+            <DataTemplate DataType="{x:Type welcomeVM:WelcomeMessageViewModel}">
+                <welcomeView:WelcomeMessageUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- List of the users modules for a category -->
+            <DataTemplate x:Name="UsersModules" DataType="{x:Type VM:UsersModulesViewModel}">
+                <Views:UsersModulesUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Module management category -->
+            <DataTemplate x:Name="AdminCategory" DataType="{x:Type AVM:AdminViewModel}">
+                <AdminViews:AdminUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- User Management User Control Template -->
+            <DataTemplate x:Name="UserManagement" DataType="{x:Type AVM:UserManagementViewModel}">
+                <AdminViews:UserManagementUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Module Management User Control Template -->
+            <DataTemplate x:Name="EditModuleManagement" DataType="{x:Type AVM:EditingModule}">
+                <AdminViews:EditModuleUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Module Management User Control Template -->
+            <DataTemplate x:Name="AddModuleManagement" DataType="{x:Type AVM:AddingModule}">
+                <AdminViews:AddModuleUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Editing Categories User Control Template -->
+            <DataTemplate x:Name="EditCategories" DataType="{x:Type AVM:EditingCategory}">
+                <AdminViews:EditCategoriesUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Add Categories User Control Template -->
+            <DataTemplate x:Name="AddCategories" DataType="{x:Type AVM:AddingCategory}">
+                <AdminViews:AddCategoriesUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <!-- Users list control -->
+            <DataTemplate x:Name="UsersLists" DataType="{x:Type AVM:UsersListViewModel}">
+                <AdminViews:UsersListUserControl DataContext="{Binding}" />
+            </DataTemplate>
+
+            <DataTemplate x:Name="UsageStats" DataType="{x:Type AVM:UsageStatisticsViewModel}">
+                <AdminViews:UsageStatisticsUserControl DataContext="{Binding}"/>
+            </DataTemplate>
+
+            <DataTemplate x:Name="RequestSoftware" DataType="{x:Type VM:RequestSoftwareViewModel}">
+                <Views:RequestSoftwareUserControl DataContext="{Binding}"/>
+            </DataTemplate>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./Styles/Strings.xaml" />
+                <ResourceDictionary Source="./Styles/Fonts.xaml" />
+                <ResourceDictionary Source="./Styles/Colors.xaml" />
+                <ResourceDictionary Source="./Styles/Controls.xaml" />
+                <ResourceDictionary Source="./Styles/Borders.xaml" />
+                <ResourceDictionary Source="./Styles/Labels.xaml" />
+                <ResourceDictionary Source="./Styles/TextBlocks.xaml" />
+                <ResourceDictionary Source="./Styles/Images.xaml" />
+                <ResourceDictionary Source="./Styles/ComboBoxes.xaml" />
+                <ResourceDictionary Source="./Styles/CheckBoxes.xaml" />
+                <ResourceDictionary Source="./Styles/IntegerUpDown.xaml" />
+                <ResourceDictionary Source="./Styles/Buttons.xaml" />
+                <ResourceDictionary Source="./Styles/Grids.xaml" />
+                <ResourceDictionary Source="./Styles/TextBoxes.xaml" />
+                <ResourceDictionary Source="./Styles/DataTemplates.xaml" />
+                <ResourceDictionary Source="./Styles/DataGrid.xaml" />
+                <ResourceDictionary Source="./Styles/DateTimePicker.xaml" />
+                <ResourceDictionary Source="./Styles/Windows.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

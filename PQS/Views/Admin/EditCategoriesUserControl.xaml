@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="PQS.Views.Admin.EditCategoriesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:int="clr-namespace:PQS.Views.CustomControls"
+             xmlns:addCategory="clr-namespace:PQS.Views.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="900">
+
+    <Grid Style="{StaticResource BaseGridStyle}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{StaticResource SelectCategory}" Style="{StaticResource DefaultDescriptionLabelStyle}" />
+
+            <ComboBox x:Name="SelectedCategory"
+                  Grid.Column="1"
+                  ItemsSource="{Binding Path=AllCategories}"
+                  SelectedItem="{Binding Path=SelectedCategory}"
+                  DisplayMemberPath="CategoryName"
+                  Style="{DynamicResource DefaultAdminComboBoxStyle}" />
+        </Grid>
+
+        <!--<addCategory:AddCategoriesUserControl Grid.Row="1" />-->
+
+        <Grid Style="{StaticResource BaseGridStyle}" Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+
+            <!-- Main content area -->
+            <Grid Style="{StaticResource AdminGridRowStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="{StaticResource CategoryName}" Style="{StaticResource DefaultDescriptionLabelStyle}" />
+
+                <TextBox x:Name="CategoryName"
+                  Grid.Column="1"
+                  Text="{Binding Path=CategoryName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}"
+                  Style="{StaticResource SmallTextBoxStyle}" />
+            </Grid>
+
+            <Grid Grid.Row="1" Style="{StaticResource AdminGridRowStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="{StaticResource Order}" Style="{StaticResource DefaultDescriptionLabelStyle}" />
+
+                <int:IntegerUpDown x:Name="ints" Grid.Column="1" Style="{StaticResource AdminIntegerUpDownControlStyle}"
+                               Minimum="0" 
+                               Value="{Binding Path=Order, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" >
+                </int:IntegerUpDown>
+            </Grid>
+
+            <Grid Grid.Row="3" Style="{StaticResource CategoryOperationButtonGridStyle}" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="1.1*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Content="{StaticResource Confirm}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource CategoryOperationButtonStyle}">
+                            <Setter Property="IsEnabled" Value="{Binding SelectedItems.Count, ElementName=SelectedCategory, FallbackValue=True}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.6" />
+                                </Trigger>
+                                <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=ints}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Setter Property="Opacity" Value="0.6" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=(Validation.HasError), ElementName=CategoryName}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                    <Setter Property="Opacity" Value="0.6" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

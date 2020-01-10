@@ -1,0 +1,55 @@
+﻿<Window x:Class="CustomDialog.Views.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:window="clr-namespace:Converters.Behaviours.WindowBehaviours;assembly=Converters"
+        xmlns:chrome="clr-namespace:Microsoft.Windows.Shell;assembly=Microsoft.Windows.Shell"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        ShowActivated="True"
+        Topmost="True"
+        mc:Ignorable="d" Height="300" Width="600">
+
+    <chrome:WindowChrome.WindowChrome>
+        <chrome:WindowChrome x:Name="chrome"
+                      ResizeBorderThickness="5"
+                      CornerRadius="20"
+                      CaptionHeight="38"
+                      GlassFrameThickness="0" />
+    </chrome:WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Top header area -->
+            <RowDefinition Height="0.22*"/>
+
+            <!-- Message content area -->
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!-- Top header bar area -->
+        <Grid Background="{StaticResource OffsetWhiteBrush}">
+            <Button Style="{StaticResource SystemIconButton}" window:SystemIconBehaviour.SystemIconProperty="True">
+                <Image Style="{StaticResource LogoImageStyle}" />
+            </Button>
+
+            <!-- Descriptive title for the dialog message -->
+            <Label Content="{Binding Path=Title, FallbackValue='Default Title'}" 
+                   Style="{StaticResource WindowTitleStyle}" 
+                   FontSize="{StaticResource FontSize20}" />
+
+            <!-- Close dialog button -->
+            <Button x:Name="CloseWindow" 
+                    HorizontalAlignment="Right"
+                    Content="X" 
+                    Style="{StaticResource WindowCloseButton}" 
+                    window:CloseOnClickBehaviour.CloseWindowProperty="True"
+                    Visibility="{Binding Path=CloseButtonVisibility, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </Grid>
+
+        <!-- Dialog Message -->
+        <ContentControl Grid.Row="1" Content="{Binding}" />
+    </Grid>
+</Window>

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{441F82DB-2505-4709-BF12-6B1E8A9818BA}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PQS.Models</RootNamespace>
+    <AssemblyName>PQS.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201906191006350_Init.cs" />
+    <Compile Include="Migrations\201906191006350_Init.Designer.cs">
+      <DependentUpon>201906191006350_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906191501056_IsActiveFlag.cs" />
+    <Compile Include="Migrations\201906191501056_IsActiveFlag.Designer.cs">
+      <DependentUpon>201906191501056_IsActiveFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906191503353_IsActiveFlag1.cs" />
+    <Compile Include="Migrations\201906191503353_IsActiveFlag1.Designer.cs">
+      <DependentUpon>201906191503353_IsActiveFlag1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906191504245_IsActiveFlag3.cs" />
+    <Compile Include="Migrations\201906191504245_IsActiveFlag3.Designer.cs">
+      <DependentUpon>201906191504245_IsActiveFlag3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906200846593_AddingParametersTable.cs" />
+    <Compile Include="Migrations\201906200846593_AddingParametersTable.Designer.cs">
+      <DependentUpon>201906200846593_AddingParametersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201144247_AddingIsDiabled.cs" />
+    <Compile Include="Migrations\201906201144247_AddingIsDiabled.Designer.cs">
+      <DependentUpon>201906201144247_AddingIsDiabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201419538_AddExectionRecords.cs" />
+    <Compile Include="Migrations\201906201419538_AddExectionRecords.Designer.cs">
+      <DependentUpon>201906201419538_AddExectionRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906210807396_AddingDisabledDateTime.cs" />
+    <Compile Include="Migrations\201906210807396_AddingDisabledDateTime.Designer.cs">
+      <DependentUpon>201906210807396_AddingDisabledDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906211349584_DecoupleExectionRecords.cs" />
+    <Compile Include="Migrations\201906211349584_DecoupleExectionRecords.Designer.cs">
+      <DependentUpon>201906211349584_DecoupleExectionRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906211459589_AddingIsFavourite.cs" />
+    <Compile Include="Migrations\201906211459589_AddingIsFavourite.Designer.cs">
+      <DependentUpon>201906211459589_AddingIsFavourite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906250828007_ChangeToObjectsExeRecords.cs" />
+    <Compile Include="Migrations\201906250828007_ChangeToObjectsExeRecords.Designer.cs">
+      <DependentUpon>201906250828007_ChangeToObjectsExeRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907171010478_AddingTemp.cs" />
+    <Compile Include="Migrations\201907171010478_AddingTemp.Designer.cs">
+      <DependentUpon>201907171010478_AddingTemp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907171016095_DeleteTemo.cs" />
+    <Compile Include="Migrations\201907171016095_DeleteTemo.Designer.cs">
+      <DependentUpon>201907171016095_DeleteTemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907291250214_AddUserModuleRequests.cs" />
+    <Compile Include="Migrations\201907291250214_AddUserModuleRequests.Designer.cs">
+      <DependentUpon>201907291250214_AddUserModuleRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907300930569_AddPermissionLevelToRequests.cs" />
+    <Compile Include="Migrations\201907300930569_AddPermissionLevelToRequests.Designer.cs">
+      <DependentUpon>201907300930569_AddPermissionLevelToRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301121327_AddOrderPermLevel.cs" />
+    <Compile Include="Migrations\201907301121327_AddOrderPermLevel.Designer.cs">
+      <DependentUpon>201907301121327_AddOrderPermLevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907301137400_AddingIsEditorPerm.cs" />
+    <Compile Include="Migrations\201907301137400_AddingIsEditorPerm.Designer.cs">
+      <DependentUpon>201907301137400_AddingIsEditorPerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908081037536_AddingAdminAccessorCol.cs" />
+    <Compile Include="Migrations\201908081037536_AddingAdminAccessorCol.Designer.cs">
+      <DependentUpon>201908081037536_AddingAdminAccessorCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908081325080_AddingExeDir.cs" />
+    <Compile Include="Migrations\201908081325080_AddingExeDir.Designer.cs">
+      <DependentUpon>201908081325080_AddingExeDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="ModelBase.cs" />
+    <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\GrantAccessPermissionLevels.cs" />
+    <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\ModuleExecutionRecords.cs" />
+    <Compile Include="Models\ModuleParameters.cs" />
+    <Compile Include="Models\PermissionLevels.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserModuleRequests.cs" />
+    <Compile Include="Models\UsersModules.cs" />
+    <Compile Include="Models\UsersStats.cs" />
+    <Compile Include="PQSContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201906191006350_Init.resx">
+      <DependentUpon>201906191006350_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906191501056_IsActiveFlag.resx">
+      <DependentUpon>201906191501056_IsActiveFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906191503353_IsActiveFlag1.resx">
+      <DependentUpon>201906191503353_IsActiveFlag1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906191504245_IsActiveFlag3.resx">
+      <DependentUpon>201906191504245_IsActiveFlag3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906200846593_AddingParametersTable.resx">
+      <DependentUpon>201906200846593_AddingParametersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201144247_AddingIsDiabled.resx">
+      <DependentUpon>201906201144247_AddingIsDiabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201419538_AddExectionRecords.resx">
+      <DependentUpon>201906201419538_AddExectionRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906210807396_AddingDisabledDateTime.resx">
+      <DependentUpon>201906210807396_AddingDisabledDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906211349584_DecoupleExectionRecords.resx">
+      <DependentUpon>201906211349584_DecoupleExectionRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906211459589_AddingIsFavourite.resx">
+      <DependentUpon>201906211459589_AddingIsFavourite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906250828007_ChangeToObjectsExeRecords.resx">
+      <DependentUpon>201906250828007_ChangeToObjectsExeRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907171010478_AddingTemp.resx">
+      <DependentUpon>201907171010478_AddingTemp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907171016095_DeleteTemo.resx">
+      <DependentUpon>201907171016095_DeleteTemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907291250214_AddUserModuleRequests.resx">
+      <DependentUpon>201907291250214_AddUserModuleRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907300930569_AddPermissionLevelToRequests.resx">
+      <DependentUpon>201907300930569_AddPermissionLevelToRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301121327_AddOrderPermLevel.resx">
+      <DependentUpon>201907301121327_AddOrderPermLevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907301137400_AddingIsEditorPerm.resx">
+      <DependentUpon>201907301137400_AddingIsEditorPerm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908081037536_AddingAdminAccessorCol.resx">
+      <DependentUpon>201908081037536_AddingAdminAccessorCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908081325080_AddingExeDir.resx">
+      <DependentUpon>201908081325080_AddingExeDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

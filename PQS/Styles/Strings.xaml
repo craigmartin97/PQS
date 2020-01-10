@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="AdminString">Admin</system:String>
+    <system:String x:Key="Favourites">Favourites</system:String>
+    <system:String x:Key="RequestSoftwareString">Request Software</system:String>
+    <system:String x:Key="AppNameString">Process Quality System</system:String>
+
+    <system:String x:Key="UserString">User</system:String>
+    <system:String x:Key="ModuleString">Module</system:String>
+    <system:String x:Key="EditModule">Edit Module</system:String>
+    <system:String x:Key="AddModule">Add Module</system:String>
+    <system:String x:Key="CategoriesString">Categories</system:String>
+
+    <system:String x:Key="GetStarted">Let's Get Started!</system:String>
+    <system:String x:Key="EnterUsername">Enter Username</system:String>
+
+    <system:String x:Key="Ok">Ok</system:String>
+    <system:String x:Key="No">No</system:String>
+    <system:String x:Key="Yes">Yes</system:String>
+
+    <system:String x:Key="AddCategory">Add Category</system:String>
+    <system:String x:Key="EditCategory">Edit Category</system:String>
+
+    <system:String x:Key="CategoryName">Category Name</system:String>
+    <system:String x:Key="Order">Order</system:String>
+
+    <system:String x:Key="SelectCategory">Select Category</system:String>
+    <system:String x:Key="Confirm">Confirm</system:String>
+
+    <system:String x:Key="WindowsID">Windows ID</system:String>
+    <system:String x:Key="Username">Username</system:String>
+    <system:String x:Key="Admin">Admin</system:String>
+
+    <system:String x:Key="DeleteUser">Delete User</system:String>
+    <system:String x:Key="UpdateUser">Update User</system:String>
+    
+    <system:String x:Key="DisplayName">Display Name</system:String>
+    <system:String x:Key="AdminIdentifyingName">Identifying Name</system:String>
+    <system:String x:Key="Description">Description</system:String>
+    <system:String x:Key="ExecutionPath">Execution Path</system:String>
+    <system:String x:Key="ExecutionDirectory">Execution Directory</system:String>
+    <system:String x:Key="LogoPath">LogoPath</system:String>
+    
+    <system:String x:Key="SelectModule">Select Module</system:String>
+
+    <system:String x:Key="RemovePerm">Remove Permission</system:String>
+    
+    <system:String x:Key="DisableModule">Module Disabled</system:String>
+    <system:String x:Key="ActiveModule">Module Active</system:String>
+    
+    <system:String x:Key="UpdateModule">Update Module</system:String>
+    <system:String x:Key="DeleteModule">Delete Module</system:String>
+    
+    <system:String x:Key="UsersList">Users List</system:String>
+    <system:String x:Key="Stats">Usage Stats</system:String>
+    
+    <system:String x:Key="UdatePermissions">Update Permissions</system:String>
+
+    <system:String x:Key="SoftwareAccessRequests">Software Access Requests</system:String>
+</ResourceDictionary>
